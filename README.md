@@ -10,3 +10,8 @@ Try the [demo](https://cooperka.github.io/two-hand-piano/).
 ## Deploying
 
 1. `yarn run deploy` to package with Webpack then automatically push to GitHub Pages
+
+## Credits
+
+Thanks to react-piano-component for some components, styles, logic, and inspiration.
+There are a lot of web pianos out there and this was the most functional, customizable, and good-looking option.
