@@ -10,12 +10,18 @@
   "scripts": {
     "lint": "eslint src",
     "test": "echo 'No tests defined'",
+    "format": "prettier --write '*.js' --write '{src,__mocks__}/**/*.js'",
     "start": "react-static start",
     "stage": "react-static build --staging",
     "build": "react-static build",
     "analyze": "react-static build --analyze",
     "serve": "serve dist -p 3000",
     "deploy": "yarn run build && scripts/publish.sh"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "dependencies": {
     "react": "16.12.0",
@@ -37,6 +43,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "3.1.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "2.0.1",
     "serve": "11.2.0"
   }
 }
