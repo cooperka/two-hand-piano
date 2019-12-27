@@ -1,7 +1,7 @@
-# Piano.js
+# Two Hand Piano
 
 Web piano built with [Tone.js](https://github.com/Tonejs/Tone.js).
-Try the [demo](https://cooperka.github.io/Piano.js/).
+Try the [demo](https://cooperka.github.io/two-hand-piano/).
 
 ## Developing
 

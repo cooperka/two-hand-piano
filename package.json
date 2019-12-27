@@ -1,5 +1,5 @@
 {
-  "name": "piano",
+  "name": "two-hand-piano",
   "version": "1.0.0",
   "description": "Web piano built with Tone.js",
   "private": false,
@@ -8,18 +8,31 @@
   "author": "Kevin Cooper <cooperka92@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "yarn run clean && webpack && cp src/public/* dist/",
+    "start": "react-static start",
+    "stage": "react-static build --staging",
+    "build": "react-static build",
+    "analyze": "react-static build --analyze",
+    "serve": "serve dist -p 3000",
     "deploy": "yarn run build && scripts/publish.sh"
   },
   "dependencies": {
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-static": "7.2.3",
+    "react-static-plugin-reach-router": "7.2.3",
+    "react-static-plugin-sitemap": "7.2.3",
+    "react-static-plugin-source-filesystem": "7.2.3",
     "tone": "13.8.25"
   },
   "devDependencies": {
-    "@babel/core": "7.7.7",
-    "@babel/preset-env": "7.7.7",
-    "babel-loader": "8.0.6",
-    "webpack": "4.41.4",
-    "webpack-cli": "3.3.10"
+    "babel-eslint": "10.0.3",
+    "eslint": "6.8.0",
+    "eslint-config-react-app": "5.1.0",
+    "eslint-config-react-tools": "1.1.7",
+    "eslint-plugin-flowtype": "4.5.2",
+    "eslint-plugin-import": "2.19.1",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.17.0",
+    "serve": "11.2.0"
   }
 }

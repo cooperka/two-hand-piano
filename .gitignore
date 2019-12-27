@@ -2,7 +2,9 @@
 node_modules/
 
 # Artifacts
+artifacts/
 dist/
+tmp/
 
 # Misc.
 .env
