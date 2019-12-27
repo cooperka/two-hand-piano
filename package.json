@@ -8,6 +8,7 @@
   "author": "Kevin Cooper <cooperka92@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "publish": "git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "tone": "13.8.25"
