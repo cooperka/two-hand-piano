@@ -8,6 +8,8 @@
   "author": "Kevin Cooper <cooperka92@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint src",
+    "test": "echo 'No tests defined'",
     "start": "react-static start",
     "stage": "react-static build --staging",
     "build": "react-static build",
@@ -26,13 +28,13 @@
   },
   "devDependencies": {
     "babel-eslint": "10.0.3",
-    "eslint": "6.8.0",
-    "eslint-config-react-app": "5.1.0",
-    "eslint-config-react-tools": "1.1.7",
-    "eslint-plugin-flowtype": "4.5.2",
-    "eslint-plugin-import": "2.19.1",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.17.0",
+    "eslint": "6.1.0",
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-config-cooperka": "1.0.4",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "serve": "11.2.0"
   }
 }
