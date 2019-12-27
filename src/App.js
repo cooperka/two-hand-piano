@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import './app.css'
-import logo from './logo.png'
+import './app.css';
+import logo from './logo.png';
 
 class App extends Component {
   render() {
@@ -10,10 +10,15 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Edit
+            {' '}
+            <code>src/App.js</code>
+            {' '}
+            and save to reload.
           </p>
           <span>
-            Learn{' '}
+            Learn
+            {' '}
             <a
               className="App-link"
               href="https://reactjs.org"
@@ -21,8 +26,10 @@ class App extends Component {
               rel="noopener noreferrer"
             >
               React
-            </a>{' '}
-            and{' '}
+            </a>
+            {' '}
+            and
+            {' '}
             <a
               className="App-link"
               href="https://react-static.js.org"
@@ -34,8 +41,8 @@ class App extends Component {
           </span>
         </header>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

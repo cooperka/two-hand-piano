@@ -2,4 +2,4 @@
 export default {
   siteRoot: 'https://cooperka.github.io/',
   basePath: 'two-hand-piano',
-}
+};

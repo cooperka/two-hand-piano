@@ -1,3 +1,11 @@
 {
-  "extends": "cooperka/react"
+  "extends": "cooperka/react",
+
+  "globals": {
+    "document": true
+  },
+
+  "rules": {
+    "react/prefer-stateless-function": "off"
+  }
 }
