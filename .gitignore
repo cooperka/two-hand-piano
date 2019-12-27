@@ -1,0 +1,11 @@
+node_modules/
+
+# Misc
+.DS_Store
+.env
+npm-*.log*
+yarn-*.log*
+
+# IntelliJ
+.idea/*
+!/.idea/runConfigurations/

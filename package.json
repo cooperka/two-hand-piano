@@ -1,0 +1,15 @@
+{
+  "name": "piano",
+  "version": "1.0.0",
+  "description": "Web piano built with Tone.js",
+  "private": false,
+  "main": "src/index.js",
+  "repository": "git@github.com:cooperka/Piano.js.git",
+  "author": "Kevin Cooper <cooperka92@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+  },
+  "dependencies": {
+    "tone": "13.8.25"
+  }
+}
