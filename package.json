@@ -9,15 +9,17 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "yarn run clean && babel src --out-dir dist && cp src/public/* dist/",
+    "build": "yarn run clean && webpack && cp src/public/* dist/",
     "deploy": "yarn run build && scripts/publish.sh"
   },
   "dependencies": {
     "tone": "13.8.25"
   },
   "devDependencies": {
-    "@babel/cli": "7.7.7",
     "@babel/core": "7.7.7",
-    "@babel/preset-env": "7.7.7"
+    "@babel/preset-env": "7.7.7",
+    "babel-loader": "8.0.6",
+    "webpack": "4.41.4",
+    "webpack-cli": "3.3.10"
   }
 }
