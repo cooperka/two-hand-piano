@@ -5,8 +5,8 @@ import './styles.css';
 function PianoContainer({ children }) {
   return (
     <div
-      className={'interactive-piano__piano-container'}
-      onMouseDown={event => event.preventDefault()}
+      className="interactive-piano__piano-container"
+      onMouseDown={(event) => event.preventDefault()}
     >
       {children}
     </div>
@@ -15,14 +15,14 @@ function PianoContainer({ children }) {
 
 function AccidentalKey({ isPlaying, text, eventHandlers }) {
   return (
-    <div className={'interactive-piano__accidental-key__wrapper'}>
+    <div className="interactive-piano__accidental-key__wrapper">
       <button
         className={`interactive-piano__accidental-key ${
           isPlaying ? 'interactive-piano__accidental-key--playing' : ''
         }`}
         {...eventHandlers}
       >
-        <div className={'interactive-piano__text'}>{text}</div>
+        <div className="interactive-piano__text">{text}</div>
       </button>
     </div>
   );
@@ -36,18 +36,18 @@ function NaturalKey({ isPlaying, text, eventHandlers }) {
       }`}
       {...eventHandlers}
     >
-      <div className={'interactive-piano__text'}>{text}</div>
+      <div className="interactive-piano__text">{text}</div>
     </button>
   );
 }
 
 function PianoKey({
-                    isNoteAccidental,
-                    isNotePlaying,
-                    startPlayingNote,
-                    stopPlayingNote,
-                    keyboardShortcuts,
-                  }) {
+  isNoteAccidental,
+  isNotePlaying,
+  startPlayingNote,
+  stopPlayingNote,
+  keyboardShortcuts,
+}) {
   function handleMouseEnter(event) {
     if (event.buttons) {
       startPlayingNote();
@@ -76,8 +76,8 @@ export default function InteractivePiano() {
   return (
     <PianoContainer>
       <Piano
-        startNote={'C4'}
-        endNote={'B5'}
+        startNote="C4"
+        endNote="B5"
         renderPianoKey={PianoKey}
         keyboardMap={{
           Q: 'C4',
