@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn run clean && babel src --out-dir dist && cp src/public/* dist/",
-    "deploy": "yarn run build && git subtree push --prefix dist origin gh-pages"
+    "deploy": "yarn run build && scripts/publish.sh"
   },
   "dependencies": {
     "tone": "13.8.25"
