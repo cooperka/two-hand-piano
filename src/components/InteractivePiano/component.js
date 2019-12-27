@@ -1,5 +1,6 @@
 import React from 'react';
 import Piano from 'react-piano-component';
+
 import './styles.css';
 
 function PianoContainer({ children }) {
@@ -76,8 +77,8 @@ export default function InteractivePiano() {
   return (
     <PianoContainer>
       <Piano
-        startNote="C4"
-        endNote="B5"
+        startNote="C3"
+        endNote="C6"
         renderPianoKey={PianoKey}
         keyboardMap={{
           Q: 'C4',
