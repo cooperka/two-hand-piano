@@ -1,11 +1,15 @@
+# Dependencies
 node_modules/
 
-# Misc
-.DS_Store
+# Artifacts
+dist/
+
+# Misc.
 .env
 npm-*.log*
 yarn-*.log*
+.DS_Store
 
-# IntelliJ
+# IDEs
 .idea/*
 !/.idea/runConfigurations/

@@ -1,4 +1,6 @@
-var piano = new Tone.Sampler({
+import Tone from 'tone';
+
+const piano = new Tone.Sampler({
   "A0" : "A0.[mp3|ogg]",
   "C1" : "C1.[mp3|ogg]",
   "D#1" : "Ds1.[mp3|ogg]",
