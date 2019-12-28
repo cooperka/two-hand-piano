@@ -46,6 +46,34 @@ function InteractivePiano() {
     setHighlightedKeyIndex(null);
     setIsSettingKeyMap(false);
   };
+  const setNextKey = (getNoteAtIndex) => {
+    const nextIndex = highlightedKeyIndex + 1;
+    if (!getNoteAtIndex(nextIndex)) {
+      finishSettingKeyMap();
+      return;
+    }
+    setHighlightedKeyIndex(nextIndex);
+  };
+  const setKeyMapEntry = (key, note) => {
+    setKeyMap({ ...keyMap, [key]: note });
+  };
+  const handleKeyDown = (
+    key,
+    note,
+    startPlayingNote,
+    stopPlayingNote,
+    getNoteAtIndex,
+  ) => {
+    if (highlightedKeyIndex == null) return;
+
+    const noteToAssign = getNoteAtIndex(highlightedKeyIndex);
+    startPlayingNote(noteToAssign);
+    setKeyMapEntry(key, noteToAssign);
+    setNextKey(getNoteAtIndex);
+
+    // For simplicity, just stop playing shortly after instead of listening for keyUp.
+    setTimeout(() => stopPlayingNote(noteToAssign), 250);
+  };
 
   return (
     <div>
@@ -64,6 +92,7 @@ function InteractivePiano() {
           renderPianoKey={PianoKey}
           pianoKeyProps={{ highlightedKeyIndex }}
           keyboardMap={keyMap}
+          onKeyDown={handleKeyDown}
         />
       </div>
     </div>
