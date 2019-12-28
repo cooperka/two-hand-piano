@@ -16,7 +16,8 @@
     "build": "react-static build",
     "analyze": "react-static build --analyze",
     "serve": "serve dist -p 3000",
-    "deploy": "yarn run build && scripts/publish.sh"
+    "deploy": "yarn run build && scripts/publish.sh",
+    "clean": "rm -rf artifacts dist tmp"
   },
   "husky": {
     "hooks": {
