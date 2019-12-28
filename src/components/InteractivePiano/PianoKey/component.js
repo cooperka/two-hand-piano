@@ -1,14 +1,16 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import './styles.css';
 
-function AccidentalKey({ isPlaying, text, eventHandlers }) {
+function AccidentalKey({ isPlaying, isHighlighted, text, eventHandlers }) {
   return (
     <div className="interactive-piano__accidental-key__wrapper">
       <button
-        className={`interactive-piano__accidental-key ${
-          isPlaying ? 'interactive-piano__accidental-key--playing' : ''
-        }`}
+        className={classNames('interactive-piano__accidental-key', {
+          'interactive-piano__accidental-key--playing': isPlaying,
+          'interactive-piano__accidental-key--highlighted': isHighlighted,
+        })}
         {...eventHandlers}
       >
         <div className="interactive-piano__text">{text}</div>
@@ -17,12 +19,13 @@ function AccidentalKey({ isPlaying, text, eventHandlers }) {
   );
 }
 
-function NaturalKey({ isPlaying, text, eventHandlers }) {
+function NaturalKey({ isPlaying, isHighlighted, text, eventHandlers }) {
   return (
     <button
-      className={`interactive-piano__natural-key ${
-        isPlaying ? 'interactive-piano__natural-key--playing' : ''
-      }`}
+      className={classNames('interactive-piano__natural-key', {
+        'interactive-piano__natural-key--playing': isPlaying,
+        'interactive-piano__natural-key--highlighted': isHighlighted,
+      })}
       {...eventHandlers}
     >
       <div className="interactive-piano__text">{text}</div>
@@ -31,11 +34,13 @@ function NaturalKey({ isPlaying, text, eventHandlers }) {
 }
 
 function PianoKey({
+  index,
   isNoteAccidental,
   isNotePlaying,
   startPlayingNote,
   stopPlayingNote,
   keyboardShortcuts,
+  highlightedKeyIndex,
 }) {
   function handleMouseEnter(event) {
     if (event.buttons) {
@@ -55,6 +60,7 @@ function PianoKey({
   return (
     <KeyComponent
       isPlaying={isNotePlaying}
+      isHighlighted={index === highlightedKeyIndex}
       text={keyboardShortcuts.join(' / ')}
       eventHandlers={eventHandlers}
     />

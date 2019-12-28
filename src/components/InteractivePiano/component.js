@@ -36,11 +36,14 @@ const defaultKeyMap = {
 function InteractivePiano() {
   const [keyMap, setKeyMap] = useState(defaultKeyMap);
   const [isSettingKeyMap, setIsSettingKeyMap] = useState(false);
+  const [highlightedKeyIndex, setHighlightedKeyIndex] = useState(null);
   const startSettingKeyMap = () => {
     setKeyMap({});
+    setHighlightedKeyIndex(0);
     setIsSettingKeyMap(true);
   };
   const finishSettingKeyMap = () => {
+    setHighlightedKeyIndex(null);
     setIsSettingKeyMap(false);
   };
 
@@ -59,6 +62,7 @@ function InteractivePiano() {
           startNote="C3"
           endNote="C6"
           renderPianoKey={PianoKey}
+          pianoKeyProps={{ highlightedKeyIndex }}
           keyboardMap={keyMap}
         />
       </div>

@@ -2008,6 +2008,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+
 clean-css@4.2.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
@@ -6901,10 +6906,9 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-piano-component@0.1.4:
+react-piano-component@cooperka/react-piano-component#2019-12-27-v0.1.4-pianoKeyProps-index:
   version "0.1.4"
-  resolved "https://registry.yarnpkg.com/react-piano-component/-/react-piano-component-0.1.4.tgz#1a8b8bb627ff1db0e946450b215c9671e24906c1"
-  integrity sha512-07QvmEyENOiCgVAoLe2MbdrOKbgIoZLvOqR40q06d4eoDJvSOi01AwbhUylMW1GPasdfCUlqXUsK5X8jHRfFhQ==
+  resolved "https://codeload.github.com/cooperka/react-piano-component/tar.gz/e159b6b3288710f1418bc36362ea78efb5e424f8"
   dependencies:
     lodash "^4.17.10"
     soundfont-player "^0.10.6"

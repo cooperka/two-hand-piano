@@ -19,6 +19,13 @@
   color: #dbdbdb;
 }
 
+.interactive-piano__accidental-key--highlighted {
+  /* Replace the regular color with highlight, still allowing background to be overridden while playing. */
+  background: #66c;
+  border-color: #66c;
+  color: #fff;
+}
+
 .interactive-piano__accidental-key--playing {
   background: #ed5276;
   color: #fff;
@@ -41,6 +48,11 @@
 .interactive-piano__natural-key--playing {
   border-bottom: 10px solid #ed5276;
   color: #ed5276;
+}
+
+.interactive-piano__natural-key--highlighted {
+  /* Replace the regular AND playing color with highlight, still allowing border-bottom while playing. */
+  background: #e0e0ff;
 }
 
 .interactive-piano__natural-key:first-of-type {
