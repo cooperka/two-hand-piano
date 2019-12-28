@@ -10,14 +10,18 @@ function SettingsButton({ text, onClick }) {
   );
 }
 
-function PianoSettings() {
+function PianoSettings({
+  startSettingKeyMap,
+  finishSettingKeyMap,
+  isSettingKeyMap,
+}) {
+  const text = isSettingKeyMap ? 'Finish configuring' : 'Configure keys';
+
   return (
     <div className="interactive-piano__piano-settings__wrapper">
       <SettingsButton
-        text="Configure keys"
-        onClick={() => {
-          console.log('Configure keys');
-        }}
+        text={text}
+        onClick={isSettingKeyMap ? finishSettingKeyMap : startSettingKeyMap}
       />
     </div>
   );

@@ -35,10 +35,22 @@ const defaultKeyMap = {
 
 function InteractivePiano() {
   const [keyMap, setKeyMap] = useState(defaultKeyMap);
+  const [isSettingKeyMap, setIsSettingKeyMap] = useState(false);
+  const startSettingKeyMap = () => {
+    setKeyMap({});
+    setIsSettingKeyMap(true);
+  };
+  const finishSettingKeyMap = () => {
+    setIsSettingKeyMap(false);
+  };
 
   return (
     <div>
-      <PianoSettings />
+      <PianoSettings
+        startSettingKeyMap={startSettingKeyMap}
+        finishSettingKeyMap={finishSettingKeyMap}
+        isSettingKeyMap={isSettingKeyMap}
+      />
       <div
         className="interactive-piano__piano-container"
         onMouseDown={(event) => event.preventDefault()}
