@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import Piano from 'react-piano-component';
 
 import PianoKey from './PianoKey/component';
@@ -33,70 +33,78 @@ const defaultKeyMap = {
   '/': 'B5',
 };
 
-function InteractivePiano() {
-  const [keyMap, setKeyMap] = useState(defaultKeyMap);
-  const [isSettingKeyMap, setIsSettingKeyMap] = useState(false);
-  const [highlightedKeyIndex, setHighlightedKeyIndex] = useState(null);
-  const startSettingKeyMap = () => {
-    setKeyMap({});
-    setHighlightedKeyIndex(0);
-    setIsSettingKeyMap(true);
-  };
-  const finishSettingKeyMap = () => {
-    setHighlightedKeyIndex(null);
-    setIsSettingKeyMap(false);
-  };
-  const setNextKey = (getNoteAtIndex) => {
-    const nextIndex = highlightedKeyIndex + 1;
-    if (!getNoteAtIndex(nextIndex)) {
-      finishSettingKeyMap();
-      return;
-    }
-    setHighlightedKeyIndex(nextIndex);
-  };
-  const setKeyMapEntry = (key, note) => {
-    setKeyMap({ ...keyMap, [key]: note });
-  };
-  const handleKeyDown = (
-    key,
-    note,
-    startPlayingNote,
-    stopPlayingNote,
-    getNoteAtIndex,
-  ) => {
-    if (highlightedKeyIndex == null) return;
-
-    const noteToAssign = getNoteAtIndex(highlightedKeyIndex);
-    startPlayingNote(noteToAssign);
-    setKeyMapEntry(key, noteToAssign);
-    setNextKey(getNoteAtIndex);
-
-    // For simplicity, just stop playing shortly after instead of listening for keyUp.
-    setTimeout(() => stopPlayingNote(noteToAssign), 250);
+class InteractivePiano extends Component {
+  state = {
+    keyMap: defaultKeyMap,
+    isSettingKeyMap: false,
+    highlightedKeyIndex: null,
   };
 
-  return (
-    <div>
-      <PianoSettings
-        startSettingKeyMap={startSettingKeyMap}
-        finishSettingKeyMap={finishSettingKeyMap}
-        isSettingKeyMap={isSettingKeyMap}
-      />
-      <div
-        className="interactive-piano__piano-container"
-        onMouseDown={(event) => event.preventDefault()}
-      >
-        <Piano
-          startNote="C3"
-          endNote="C6"
-          renderPianoKey={PianoKey}
-          pianoKeyProps={{ highlightedKeyIndex }}
-          keyboardMap={keyMap}
-          onKeyDown={handleKeyDown}
+  render() {
+    const { keyMap, isSettingKeyMap, highlightedKeyIndex } = this.state;
+
+    const startSettingKeyMap = () => {
+      this.setState({
+        keyMap: {},
+        highlightedKeyIndex: 0,
+        isSettingKeyMap: true,
+      });
+    };
+    const finishSettingKeyMap = () => {
+      this.setState({ highlightedKeyIndex: null, isSettingKeyMap: false });
+    };
+    const setNextKey = (getNoteAtIndex) => {
+      const nextIndex = highlightedKeyIndex + 1;
+      if (!getNoteAtIndex(nextIndex)) {
+        finishSettingKeyMap();
+        return;
+      }
+      this.setState({ highlightedKeyIndex: nextIndex });
+    };
+    const setKeyMapEntry = (key, note) => {
+      this.setState({ keyMap: { ...keyMap, [key]: note } });
+    };
+    const handleKeyDown = (
+      key,
+      note,
+      startPlayingNote,
+      stopPlayingNote,
+      getNoteAtIndex,
+    ) => {
+      if (highlightedKeyIndex == null) return;
+
+      const noteToAssign = getNoteAtIndex(highlightedKeyIndex);
+      startPlayingNote(noteToAssign);
+      setKeyMapEntry(key, noteToAssign);
+      setNextKey(getNoteAtIndex);
+
+      // For simplicity, just stop playing shortly after instead of listening for keyUp.
+      setTimeout(() => stopPlayingNote(noteToAssign), 250);
+    };
+
+    return (
+      <div>
+        <PianoSettings
+          startSettingKeyMap={startSettingKeyMap}
+          finishSettingKeyMap={finishSettingKeyMap}
+          isSettingKeyMap={isSettingKeyMap}
         />
+        <div
+          className="interactive-piano__piano-container"
+          onMouseDown={(event) => event.preventDefault()}
+        >
+          <Piano
+            startNote="C3"
+            endNote="C6"
+            renderPianoKey={PianoKey}
+            pianoKeyProps={{ highlightedKeyIndex }}
+            keyboardMap={keyMap}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default InteractivePiano;
