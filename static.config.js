@@ -20,22 +20,37 @@ export default {
         <title>Two-hand piano</title>
 
         {/* Favicon: https://realfavicongenerator.net/ */}
-        {/* <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=47MJ24bJM7" /> */}
-        {/* <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=47MJ24bJM7" /> */}
-        {/* <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=47MJ24bJM7" /> */}
-        {/* <link rel="manifest" href="/site.webmanifest?v=47MJ24bJM7" /> */}
-        {/* <link rel="mask-icon" href="/safari-pinned-tab.svg?v=47MJ24bJM7" color="#000000" /> */}
-        {/* <link rel="shortcut icon" href="/favicon.ico?v=47MJ24bJM7" /> */}
-        {/* <meta name="apple-mobile-web-app-title" content="LSR" /> */}
-        {/* <meta name="application-name" content="LSR" /> */}
-        {/* <meta name="msapplication-TileColor" content="#603cba" /> */}
-        <meta name="theme-color" content="#444" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="favicon-16x16.png"
+        />
+        <link rel="manifest" href="site.webmanifest" />
+        <link rel="mask-icon" href="safari-pinned-tab.svg" color="#444444" />
+        <meta name="msapplication-TileColor" content="#603cba" />
+        <meta name="application-name" content="Two-hand piano" />
+        <meta name="theme-color" content="#444444" />
 
         {/* Facebook Open Graph markup: https://developers.facebook.com/tools/debug/og/object/ */}
-        {/* <meta property="og:type" content="article" /> */}
-        {/* <meta property="og:image" content="https://example.com/facebook-preview-v3.png" /> */}
-        {/* <meta property="og:image:width" content="800" /> */}
-        {/* <meta property="og:image:height" content="400" /> */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content={`${api.SITE_ROOT}/${api.BASE_PATH}/images/fb-preview.png`}
+        />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
 
         {/* Google Analytics - Global site tag */}
         <script

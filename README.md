@@ -26,5 +26,8 @@ Thanks to Alexander Holm for the
 [Salamander Grand Piano V2 samples](public/audio/salamander) used to provide the
 Tone.js audio.
 
+Thanks to [Sounds Electric](https://www.iconfinder.com/soundselectric) for the
+site favicon.
+
 And thanks to all the other free and open-source software documented in
 [yarn.lock](yarn.lock).
