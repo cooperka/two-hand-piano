@@ -49,8 +49,8 @@ export default {
           property="og:image"
           content={`${api.SITE_ROOT}/${api.BASE_PATH}/images/fb-preview.png`}
         />
-        <meta property="og:image:width" content="512" />
-        <meta property="og:image:height" content="512" />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="256" />
 
         {/* Google Analytics - Global site tag */}
         <script
