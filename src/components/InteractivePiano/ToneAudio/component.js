@@ -42,7 +42,7 @@ class ToneAudio extends Component {
 
     this.sampler = new Tone.Sampler(sampleData, {
       release: 1,
-      baseUrl: 'https://tonejs.github.io/examples/audio/salamander/',
+      baseUrl: 'audio/salamander/',
     }).toMaster();
   }
 
