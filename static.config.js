@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { api } from './src/constants';
+
 // Docs: https://github.com/react-static/react-static/blob/master/docs/config.md
 export default {
-  siteRoot: 'https://cooperka.github.io/',
-  basePath: 'two-hand-piano',
+  siteRoot: api.SITE_ROOT,
+  basePath: api.BASE_PATH,
 
   /* eslint-disable react/prop-types */
   Document: ({ Html, Head, Body, children, siteData, renderMeta }) => (
@@ -34,12 +36,6 @@ export default {
         {/* <meta property="og:image" content="https://example.com/facebook-preview-v3.png" /> */}
         {/* <meta property="og:image:width" content="800" /> */}
         {/* <meta property="og:image:height" content="400" /> */}
-
-        {/* http://google.github.io/material-design-icons/#icon-font-for-the-web */}
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        />
 
         {/* Google Analytics - Global site tag */}
         <script
