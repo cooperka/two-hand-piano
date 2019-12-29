@@ -8,7 +8,7 @@ STATUS=`git status`
 if [[ $STATUS == *'nothing to commit, working '*' clean'* ]]
 then
     git add -f dist
-    git commit -m 'Force-commit dist for publish'
+    git commit -m 'Force-commit dist for publish' --no-verify
     git push origin `git subtree split --prefix dist master`:gh-pages --force
     git reset HEAD^
 else
