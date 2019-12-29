@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import isEqual from 'lodash/isEqual';
+import difference from 'lodash/difference';
 import Tone from 'tone';
-
-function getStartedNotes() {
-  return []; // TODO
-}
-
-function getStoppedNotes() {
-  return []; // TODO
-}
 
 class ToneAudio extends Component {
   constructor(props) {
@@ -26,10 +19,10 @@ class ToneAudio extends Component {
     const { notes: prevNotes } = prevProps;
 
     if (!isEqual(notes, prevNotes)) {
-      const startedNotes = getStartedNotes(notes, prevNotes);
+      const startedNotes = difference(notes, prevNotes);
       this.startPlayingNotes(startedNotes);
 
-      const stoppedNotes = getStoppedNotes(notes, prevNotes);
+      const stoppedNotes = difference(prevNotes, notes);
       this.stopPlayingNotes(stoppedNotes);
     }
   }
