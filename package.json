@@ -8,7 +8,7 @@
   "author": "Kevin Cooper <cooperka92@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint *.js src",
     "test": "echo 'No tests defined'",
     "format": "prettier --write '*.js' --write '{src,__mocks__}/**/*.js'",
     "start": "react-static start",
