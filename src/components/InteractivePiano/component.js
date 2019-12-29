@@ -3,6 +3,7 @@ import Piano from 'react-piano-component';
 
 import PianoKey from './PianoKey/component';
 import PianoSettings from './PianoSettings/component';
+import ToneAudio from './ToneAudio/component';
 
 import './styles.css';
 
@@ -115,6 +116,7 @@ class InteractivePiano extends Component {
             pianoKeyProps={{ highlightedKeyIndex }}
             keyboardMap={keyMap}
             onKeyDown={handleKeyDown}
+            renderAudio={ToneAudio}
           />
         </div>
       </div>
