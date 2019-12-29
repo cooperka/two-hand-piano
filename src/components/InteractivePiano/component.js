@@ -6,6 +6,8 @@ import PianoSettings from './PianoSettings/component';
 
 import './styles.css';
 
+const KEY_MAP_KEY = 'KEY_MAP';
+
 const defaultKeyMap = {
   Q: 'C4',
   2: 'C#4',
@@ -33,12 +35,21 @@ const defaultKeyMap = {
   '/': 'B5',
 };
 
+function persistData(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
 class InteractivePiano extends Component {
   state = {
-    keyMap: defaultKeyMap,
+    keyMap: {},
     isSettingKeyMap: false,
     highlightedKeyIndex: null,
   };
+
+  componentDidMount() {
+    const fromStorage = JSON.parse(localStorage.getItem(KEY_MAP_KEY));
+    this.setState({ keyMap: fromStorage || defaultKeyMap });
+  }
 
   render() {
     const { keyMap, isSettingKeyMap, highlightedKeyIndex } = this.state;
@@ -81,12 +92,16 @@ class InteractivePiano extends Component {
       // For simplicity, just stop playing shortly after instead of listening for keyUp.
       setTimeout(() => stopPlayingNote(noteToAssign), 250);
     };
+    const persistKeyMap = () => {
+      persistData(KEY_MAP_KEY, keyMap);
+    };
 
     return (
       <div>
         <PianoSettings
           startSettingKeyMap={startSettingKeyMap}
           finishSettingKeyMap={finishSettingKeyMap}
+          persistKeyMap={persistKeyMap}
           isSettingKeyMap={isSettingKeyMap}
         />
         <div

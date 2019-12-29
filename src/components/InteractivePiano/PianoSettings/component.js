@@ -13,16 +13,16 @@ function SettingsButton({ text, onClick }) {
 function PianoSettings({
   startSettingKeyMap,
   finishSettingKeyMap,
+  persistKeyMap,
   isSettingKeyMap,
 }) {
-  const text = isSettingKeyMap ? 'Finish configuring' : 'Configure keys';
-
   return (
     <div className="interactive-piano__piano-settings__wrapper">
       <SettingsButton
-        text={text}
+        text={isSettingKeyMap ? 'Finish configuring' : 'Configure keys'}
         onClick={isSettingKeyMap ? finishSettingKeyMap : startSettingKeyMap}
       />
+      <SettingsButton text="Save config" onClick={persistKeyMap} />
     </div>
   );
 }
