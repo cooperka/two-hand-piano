@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Piano from 'react-piano-component';
 
+import { oneHandDefault, twoHandDefault } from './keyMaps';
 import PianoKey from './PianoKey/component';
 import PianoSettings from './PianoSettings/component';
 import ToneAudio from './ToneAudio/component';
@@ -8,33 +9,6 @@ import ToneAudio from './ToneAudio/component';
 import './styles.css';
 
 const KEY_MAP_KEY = 'KEY_MAP';
-
-const defaultKeyMap = {
-  Q: 'C4',
-  2: 'C#4',
-  W: 'D4',
-  3: 'D#4',
-  E: 'E4',
-  R: 'F4',
-  5: 'F#4',
-  T: 'G4',
-  6: 'G#4',
-  Y: 'A4',
-  7: 'A#4',
-  U: 'B4',
-  V: 'C5',
-  G: 'C#5',
-  B: 'D5',
-  H: 'D#5',
-  N: 'E5',
-  M: 'F5',
-  K: 'F#5',
-  ',': 'G5',
-  L: 'G#5',
-  '.': 'A5',
-  ';': 'A#5',
-  '/': 'B5',
-};
 
 function persistData(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
@@ -48,9 +22,13 @@ class InteractivePiano extends Component {
   };
 
   componentDidMount() {
-    const fromStorage = JSON.parse(localStorage.getItem(KEY_MAP_KEY));
-    this.setState({ keyMap: fromStorage || defaultKeyMap });
+    this.useSavedKeyMap();
   }
+
+  useSavedKeyMap = () => {
+    const fromStorage = JSON.parse(localStorage.getItem(KEY_MAP_KEY));
+    this.setState({ keyMap: fromStorage || twoHandDefault });
+  };
 
   render() {
     const { keyMap, isSettingKeyMap, highlightedKeyIndex } = this.state;
@@ -104,6 +82,9 @@ class InteractivePiano extends Component {
           finishSettingKeyMap={finishSettingKeyMap}
           persistKeyMap={persistKeyMap}
           isSettingKeyMap={isSettingKeyMap}
+          useSavedKeyMap={this.useSavedKeyMap}
+          useOneHandKeyMap={() => this.setState({ keyMap: oneHandDefault })}
+          useTwoHandKeyMap={() => this.setState({ keyMap: twoHandDefault })}
         />
         <div
           className="interactive-piano__piano-container"
