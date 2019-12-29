@@ -2,16 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-// Your top level component
+import { env } from './constants';
 import App from './components/App/component';
 
 import './index.css';
 
-// Export your top level component as JSX (for static rendering)
+// Top-level component for static rendering.
 export default App;
 
-// Render your app
-if (typeof document !== 'undefined') {
+if (!env.IS_STATIC) {
   const target = document.getElementById('root');
 
   const renderMethod = target.hasChildNodes()
@@ -30,7 +29,7 @@ if (typeof document !== 'undefined') {
   // Render!
   render(App);
 
-  // Hot Module Replacement
+  // Hot Module Replacement (HMR).
   if (module && module.hot) {
     module.hot.accept('./components/App/component', () => {
       render(App);

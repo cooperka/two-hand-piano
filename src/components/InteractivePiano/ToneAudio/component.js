@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
-import Tone from 'tone';
+
+import { env } from '../../../constants';
+
+// Tone is incompatible with static rendering.
+const Tone = env.IS_STATIC ? null : require('tone');
 
 const sampleData = {
   A0: 'A0.[mp3|ogg]',
@@ -40,10 +44,12 @@ class ToneAudio extends Component {
   constructor(props) {
     super(props);
 
-    this.sampler = new Tone.Sampler(sampleData, {
-      release: 1,
-      baseUrl: 'audio/salamander/',
-    }).toMaster();
+    this.sampler = env.IS_STATIC
+      ? null
+      : new Tone.Sampler(sampleData, {
+          release: 1,
+          baseUrl: 'audio/salamander/',
+        }).toMaster();
   }
 
   componentDidMount() {
