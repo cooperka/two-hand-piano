@@ -29,7 +29,7 @@
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-hot-loader": "4.12.18",
-    "react-piano-component": "cooperka/react-piano-component#2019-12-28-v0.1.4-pianoKeyProps-index-onKey-getNoteAtIndex-lowercase",
+    "react-piano-component": "cooperka/react-piano-component#2019-12-29-v0.1.4-pianoKeyProps-index-onKey-getNoteAtIndex-keyCase-window-2",
     "react-static": "7.2.3",
     "react-static-plugin-reach-router": "7.2.3",
     "react-static-plugin-sitemap": "7.2.3",

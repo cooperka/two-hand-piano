@@ -6906,9 +6906,9 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-piano-component@cooperka/react-piano-component#2019-12-28-v0.1.4-pianoKeyProps-index-onKey-getNoteAtIndex-lowercase:
+react-piano-component@cooperka/react-piano-component#2019-12-29-v0.1.4-pianoKeyProps-index-onKey-getNoteAtIndex-keyCase-window-2:
   version "0.1.4"
-  resolved "https://codeload.github.com/cooperka/react-piano-component/tar.gz/dfdda338afb991ab793381589c2ece9fbe2e1963"
+  resolved "https://codeload.github.com/cooperka/react-piano-component/tar.gz/ebec29c308d6077ae2d0cc8e99c2f21ea8d70cbd"
   dependencies:
     lodash "^4.17.10"
     soundfont-player "^0.10.6"
