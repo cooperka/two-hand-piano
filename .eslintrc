@@ -1,11 +1,20 @@
 {
   "extends": "cooperka/react",
 
+  "parser": "babel-eslint",
+
   "env": {
     "browser": true
   },
 
   "rules": {
+    // --- Handled by Prettier
+    "indent": "off",
+
+    // Just don't need it for this project
+    "react/prop-types": "off",
+
+    // Unnecessary
     "react/prefer-stateless-function": "off"
   }
 }
