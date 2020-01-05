@@ -52,6 +52,12 @@ export default {
         <meta property="og:image:width" content="256" />
         <meta property="og:image:height" content="256" />
 
+        {/* For MUI */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+
         {/* Google Analytics - Global site tag */}
         <script
           async

@@ -1,12 +1,12 @@
 .interactive-piano__piano-settings__wrapper {
-  height: 40px;
+  height: 60px;
 }
 
-.interactive-piano__settings-button {
+.interactive-piano__settings-group {
   margin-top: 8px;
   margin-left: 8px;
 }
 
-.interactive-piano__settings-button:first-of-type {
+.interactive-piano__settings-group:first-of-type {
   margin-left: 0;
 }

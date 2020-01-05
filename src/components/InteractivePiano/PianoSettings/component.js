@@ -1,14 +1,8 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import './styles.css';
-
-function SettingsButton({ text, onClick }) {
-  return (
-    <button className="interactive-piano__settings-button" onClick={onClick}>
-      {text}
-    </button>
-  );
-}
 
 function PianoSettings({
   startSettingKeyMap,
@@ -21,20 +15,25 @@ function PianoSettings({
 }) {
   return (
     <div className="interactive-piano__piano-settings__wrapper">
-      <SettingsButton
-        text={isSettingKeyMap ? 'Finish configuring' : 'New custom key map'}
-        onClick={isSettingKeyMap ? finishSettingKeyMap : startSettingKeyMap}
-      />
-      <SettingsButton text="Save current key map" onClick={persistKeyMap} />
-      <SettingsButton text="Load saved key map" onClick={useSavedKeyMap} />
-      <SettingsButton
-        text="Load default: one-hand"
-        onClick={useOneHandKeyMap}
-      />
-      <SettingsButton
-        text="Load default: two-hand"
-        onClick={useTwoHandKeyMap}
-      />
+      <ButtonGroup
+        color="primary"
+        className="interactive-piano__settings-group"
+      >
+        <Button
+          onClick={isSettingKeyMap ? finishSettingKeyMap : startSettingKeyMap}
+        >
+          {isSettingKeyMap ? 'Finish configuring' : 'New custom key map'}
+        </Button>
+        <Button onClick={persistKeyMap}>Save current key map</Button>
+      </ButtonGroup>
+      <ButtonGroup
+        color="primary"
+        className="interactive-piano__settings-group"
+      >
+        <Button onClick={useSavedKeyMap}>Load saved key map</Button>
+        <Button onClick={useOneHandKeyMap}>Load default: one-hand</Button>
+        <Button onClick={useTwoHandKeyMap}>Load default: two-hand</Button>
+      </ButtonGroup>
     </div>
   );
 }
