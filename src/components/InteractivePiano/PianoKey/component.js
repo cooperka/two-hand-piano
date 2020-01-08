@@ -11,8 +11,8 @@ function AccidentalKey({ isPlaying, isHighlighted, text, eventHandlers }) {
     <div className={classes.accidentalWrapper}>
       <button
         className={classNames(classes.accidentalKey, {
-          [classes.accidentalKey_playing]: isPlaying,
-          [classes.accidentalKey_highlighted]: isHighlighted,
+          playing: isPlaying,
+          highlighted: isHighlighted,
         })}
         {...eventHandlers}
       >
@@ -28,8 +28,8 @@ function NaturalKey({ isPlaying, isHighlighted, text, eventHandlers }) {
   return (
     <button
       className={classNames(classes.naturalKey, {
-        [classes.naturalKey_playing]: isPlaying,
-        [classes.naturalKey_highlighted]: isHighlighted,
+        playing: isPlaying,
+        highlighted: isHighlighted,
       })}
       {...eventHandlers}
     >
@@ -91,17 +91,18 @@ const useStyles = makeStyles({
     padding: 5,
     outline: 'none',
     color: '#dbdbdb',
-  },
-  accidentalKey_playing: {
-    background: '#ed5276',
-    color: '#fff',
-  },
-  accidentalKey_highlighted: {
-    // TODO: Regression
-    /* Replace the regular color with highlight, still allowing background to be overridden while playing. */
-    background: '#66c',
-    borderColor: '#66c',
-    color: '#fff',
+    '&.playing': {
+      background: '#ed5276',
+      color: '#fff',
+    },
+    '&.highlighted': {
+      borderColor: '#66c',
+      color: '#fff',
+      '&:not(.playing)': {
+        // Replace the regular color with highlight, still allowing background to be overridden while playing.
+        background: '#66c',
+      },
+    },
   },
   naturalKey: {
     cursor: 'pointer',
@@ -121,15 +122,14 @@ const useStyles = makeStyles({
     '&:lastOfType': {
       marginRight: 0,
     },
-  },
-  naturalKey_playing: {
-    borderBottom: '10px solid #ed5276',
-    color: '#ed5276',
-  },
-  naturalKey_highlighted: {
-    // TODO: Regression
-    /* Replace the regular AND playing color with highlight, still allowing border-bottom while playing. */
-    background: '#e0e0ff',
+    '&.playing': {
+      borderBottom: '10px solid #ed5276',
+      color: '#ed5276',
+    },
+    '&.highlighted': {
+      // Replace the regular AND playing color with highlight, still allowing border-bottom while playing.
+      background: '#e0e0ff',
+    },
   },
   text: textStyle,
 });
