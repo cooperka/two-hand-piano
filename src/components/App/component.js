@@ -1,17 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
 import InteractivePiano from '../InteractivePiano/component';
 
-import './styles.css';
+function App() {
+  const classes = useStyles();
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <InteractivePiano />
-      </div>
-    );
-  }
+  return (
+    <div className={classes.wrapper}>
+      <InteractivePiano />
+    </div>
+  );
 }
+
+const useStyles = makeStyles({
+  wrapper: {
+    textAlign: 'center',
+  },
+});
 
 export default App;

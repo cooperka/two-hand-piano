@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Piano from 'react-piano-component';
+import { withStyles } from '@material-ui/core/styles';
 
 import { oneHandDefault, twoHandDefault } from './keyMaps';
 import PianoKey from './PianoKey/component';
 import PianoSettings from './PianoSettings/component';
 import ToneAudio from './ToneAudio/component';
-
-import './styles.css';
 
 const KEY_MAP_KEY = 'KEY_MAP';
 
@@ -31,6 +30,7 @@ class InteractivePiano extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     const { keyMap, isSettingKeyMap, highlightedKeyIndex } = this.state;
 
     const startSettingKeyMap = () => {
@@ -87,7 +87,7 @@ class InteractivePiano extends Component {
           useTwoHandKeyMap={() => this.setState({ keyMap: twoHandDefault })}
         />
         <div
-          className="interactive-piano__piano-container"
+          className={classes.container}
           onMouseDown={(event) => event.preventDefault()}
         >
           <Piano
@@ -105,4 +105,22 @@ class InteractivePiano extends Component {
   }
 }
 
-export default InteractivePiano;
+const styles = {
+  container: {
+    display: 'inline-flex',
+    boxSizing: 'border-box',
+    borderTop: '10px solid #ed5276',
+    position: 'relative',
+    margin: 'auto',
+    '& ::after': {
+      content: '',
+      width: '100%',
+      height: 5,
+      backgroundColor: 'rgba(68, 68, 68, 0.1)',
+      position: 'absolute',
+      top: 0,
+    },
+  },
+};
+
+export default withStyles(styles)(InteractivePiano);
