@@ -17,6 +17,8 @@ function persistData(key, value) {
 
 class InteractivePiano extends Component {
   state = {
+    startOctave: 3,
+    endOctave: 6,
     keyMap: {},
     isSettingKeyMap: false,
     highlightedKeyIndex: null,
@@ -83,9 +85,29 @@ class InteractivePiano extends Component {
     persistData(KEY_MAP_KEY, keyMap);
   };
 
+  increaseStartOctave = (numOctaves) => {
+    const { startOctave, endOctave } = this.state;
+    const newStart = startOctave - numOctaves;
+    const newEnd = newStart >= endOctave ? newStart + 1 : endOctave;
+    this.setState({ startOctave: newStart, endOctave: newEnd });
+  };
+
+  increaseEndOctave = (numOctaves) => {
+    const { startOctave, endOctave } = this.state;
+    const newEnd = endOctave + numOctaves;
+    const newStart = newEnd <= startOctave ? newEnd - 1 : startOctave;
+    this.setState({ startOctave: newStart, endOctave: newEnd });
+  };
+
   render() {
     const { classes } = this.props;
-    const { keyMap, isSettingKeyMap, highlightedKeyIndex } = this.state;
+    const {
+      startOctave,
+      endOctave,
+      keyMap,
+      isSettingKeyMap,
+      highlightedKeyIndex,
+    } = this.state;
 
     return (
       <div>
@@ -104,12 +126,12 @@ class InteractivePiano extends Component {
             orientation="vertical"
             color="primary"
           >
-            <Button onClick={undefined}>+</Button>
-            <Button onClick={undefined}>-</Button>
+            <Button onClick={() => this.increaseStartOctave(1)}>+</Button>
+            <Button onClick={() => this.increaseStartOctave(-1)}>-</Button>
           </ButtonGroup>
           <Piano
-            startNote="C3"
-            endNote="C6"
+            startNote={`C${startOctave}`}
+            endNote={`C${endOctave}`}
             renderPianoKey={PianoKey}
             pianoKeyProps={{ highlightedKeyIndex }}
             keyboardMap={keyMap}
@@ -121,8 +143,8 @@ class InteractivePiano extends Component {
             orientation="vertical"
             color="primary"
           >
-            <Button onClick={undefined}>+</Button>
-            <Button onClick={undefined}>-</Button>
+            <Button onClick={() => this.increaseEndOctave(1)}>+</Button>
+            <Button onClick={() => this.increaseEndOctave(-1)}>-</Button>
           </ButtonGroup>
         </div>
       </div>
