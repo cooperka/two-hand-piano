@@ -141,8 +141,18 @@ class InteractivePiano extends Component {
             orientation="vertical"
             color="primary"
           >
-            <Button onClick={() => this.increaseStartOctave(1)}>+</Button>
-            <Button onClick={() => this.increaseStartOctave(-1)}>-</Button>
+            <Button
+              disabled={startOctave <= PIANO_LOWEST_OCTAVE}
+              onClick={() => this.increaseStartOctave(1)}
+            >
+              +
+            </Button>
+            <Button
+              disabled={startOctave >= PIANO_HIGHEST_OCTAVE - 1}
+              onClick={() => this.increaseStartOctave(-1)}
+            >
+              -
+            </Button>
           </ButtonGroup>
           <Piano
             startNote={`${PIANO_LOWEST_NOTE}${startOctave}`}
@@ -158,8 +168,18 @@ class InteractivePiano extends Component {
             orientation="vertical"
             color="primary"
           >
-            <Button onClick={() => this.increaseEndOctave(1)}>+</Button>
-            <Button onClick={() => this.increaseEndOctave(-1)}>-</Button>
+            <Button
+              disabled={endOctave >= PIANO_HIGHEST_OCTAVE}
+              onClick={() => this.increaseEndOctave(1)}
+            >
+              +
+            </Button>
+            <Button
+              disabled={endOctave <= PIANO_LOWEST_OCTAVE + 1}
+              onClick={() => this.increaseEndOctave(-1)}
+            >
+              -
+            </Button>
           </ButtonGroup>
         </div>
       </div>
