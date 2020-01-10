@@ -31,58 +31,68 @@ class InteractivePiano extends Component {
     this.setState({ keyMap: fromStorage || twoHandDefault });
   };
 
+  startSettingKeyMap = () => {
+    this.setState({
+      keyMap: {},
+      highlightedKeyIndex: 0,
+      isSettingKeyMap: true,
+    });
+  };
+
+  finishSettingKeyMap = () => {
+    this.setState({ highlightedKeyIndex: null, isSettingKeyMap: false });
+  };
+
+  setNextKey = (getNoteAtIndex) => {
+    const { highlightedKeyIndex } = this.state;
+    const nextIndex = highlightedKeyIndex + 1;
+    if (!getNoteAtIndex(nextIndex)) {
+      this.finishSettingKeyMap();
+      return;
+    }
+    this.setState({ highlightedKeyIndex: nextIndex });
+  };
+
+  setKeyMapEntry = (key, note) => {
+    const { keyMap } = this.state;
+    this.setState({ keyMap: { ...keyMap, [key]: note } });
+  };
+
+  handleKeyDown = (
+    key,
+    note,
+    startPlayingNote,
+    stopPlayingNote,
+    getNoteAtIndex,
+  ) => {
+    const { highlightedKeyIndex } = this.state;
+
+    if (highlightedKeyIndex == null) return;
+
+    const noteToAssign = getNoteAtIndex(highlightedKeyIndex);
+    startPlayingNote(noteToAssign);
+    this.setKeyMapEntry(key, noteToAssign);
+    this.setNextKey(getNoteAtIndex);
+
+    // For simplicity, just stop playing shortly after instead of listening for keyUp.
+    setTimeout(() => stopPlayingNote(noteToAssign), 250);
+  };
+
+  persistKeyMap = () => {
+    const { keyMap } = this.state;
+    persistData(KEY_MAP_KEY, keyMap);
+  };
+
   render() {
     const { classes } = this.props;
     const { keyMap, isSettingKeyMap, highlightedKeyIndex } = this.state;
 
-    const startSettingKeyMap = () => {
-      this.setState({
-        keyMap: {},
-        highlightedKeyIndex: 0,
-        isSettingKeyMap: true,
-      });
-    };
-    const finishSettingKeyMap = () => {
-      this.setState({ highlightedKeyIndex: null, isSettingKeyMap: false });
-    };
-    const setNextKey = (getNoteAtIndex) => {
-      const nextIndex = highlightedKeyIndex + 1;
-      if (!getNoteAtIndex(nextIndex)) {
-        finishSettingKeyMap();
-        return;
-      }
-      this.setState({ highlightedKeyIndex: nextIndex });
-    };
-    const setKeyMapEntry = (key, note) => {
-      this.setState({ keyMap: { ...keyMap, [key]: note } });
-    };
-    const handleKeyDown = (
-      key,
-      note,
-      startPlayingNote,
-      stopPlayingNote,
-      getNoteAtIndex,
-    ) => {
-      if (highlightedKeyIndex == null) return;
-
-      const noteToAssign = getNoteAtIndex(highlightedKeyIndex);
-      startPlayingNote(noteToAssign);
-      setKeyMapEntry(key, noteToAssign);
-      setNextKey(getNoteAtIndex);
-
-      // For simplicity, just stop playing shortly after instead of listening for keyUp.
-      setTimeout(() => stopPlayingNote(noteToAssign), 250);
-    };
-    const persistKeyMap = () => {
-      persistData(KEY_MAP_KEY, keyMap);
-    };
-
     return (
       <div>
         <PianoSettings
-          startSettingKeyMap={startSettingKeyMap}
-          finishSettingKeyMap={finishSettingKeyMap}
-          persistKeyMap={persistKeyMap}
+          startSettingKeyMap={this.startSettingKeyMap}
+          finishSettingKeyMap={this.finishSettingKeyMap}
+          persistKeyMap={this.persistKeyMap}
           isSettingKeyMap={isSettingKeyMap}
           useSavedKeyMap={this.useSavedKeyMap}
           useOneHandKeyMap={() => this.setState({ keyMap: oneHandDefault })}
@@ -103,7 +113,7 @@ class InteractivePiano extends Component {
             renderPianoKey={PianoKey}
             pianoKeyProps={{ highlightedKeyIndex }}
             keyboardMap={keyMap}
-            onKeyDown={handleKeyDown}
+            onKeyDown={this.handleKeyDown}
             renderAudio={ToneAudio}
           />
           <ButtonGroup
