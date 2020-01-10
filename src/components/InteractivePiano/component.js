@@ -214,6 +214,8 @@ class InteractivePiano extends Component {
 const styles = {
   container: {
     display: 'inline-flex',
+    justifyContent: 'center',
+    width: '100%',
     boxSizing: 'border-box',
     borderTop: '10px solid #ed5276',
     position: 'relative',
