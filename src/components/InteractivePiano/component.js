@@ -11,14 +11,19 @@ import ToneAudio from './ToneAudio/component';
 
 const KEY_MAP_KEY = 'KEY_MAP';
 
+const PIANO_LOWEST_NOTE = 'A';
+const PIANO_LOWEST_OCTAVE = 0;
+const PIANO_HIGHEST_NOTE = 'C';
+const PIANO_HIGHEST_OCTAVE = 8;
+
 function persistData(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
 class InteractivePiano extends Component {
   state = {
-    startOctave: 3,
-    endOctave: 6,
+    startOctave: 2,
+    endOctave: 5,
     keyMap: {},
     isSettingKeyMap: false,
     highlightedKeyIndex: null,
@@ -87,14 +92,24 @@ class InteractivePiano extends Component {
 
   increaseStartOctave = (numOctaves) => {
     const { startOctave, endOctave } = this.state;
-    const newStart = startOctave - numOctaves;
+    const newStart = Math.min(
+      // Don't go higher than (highest - 1).
+      PIANO_HIGHEST_OCTAVE - 1,
+      // Don't go lower than the lowest possible note.
+      Math.max(PIANO_LOWEST_OCTAVE, startOctave - numOctaves),
+    );
     const newEnd = newStart >= endOctave ? newStart + 1 : endOctave;
     this.setState({ startOctave: newStart, endOctave: newEnd });
   };
 
   increaseEndOctave = (numOctaves) => {
     const { startOctave, endOctave } = this.state;
-    const newEnd = endOctave + numOctaves;
+    const newEnd = Math.max(
+      // Don't go lower than (lowest + 1).
+      PIANO_LOWEST_OCTAVE + 1,
+      // Don't go higher than the highest possible note.
+      Math.min(PIANO_HIGHEST_OCTAVE, endOctave + numOctaves),
+    );
     const newStart = newEnd <= startOctave ? newEnd - 1 : startOctave;
     this.setState({ startOctave: newStart, endOctave: newEnd });
   };
@@ -130,8 +145,8 @@ class InteractivePiano extends Component {
             <Button onClick={() => this.increaseStartOctave(-1)}>-</Button>
           </ButtonGroup>
           <Piano
-            startNote={`C${startOctave}`}
-            endNote={`C${endOctave}`}
+            startNote={`${PIANO_LOWEST_NOTE}${startOctave}`}
+            endNote={`${PIANO_HIGHEST_NOTE}${endOctave}`}
             renderPianoKey={PianoKey}
             pianoKeyProps={{ highlightedKeyIndex }}
             keyboardMap={keyMap}
