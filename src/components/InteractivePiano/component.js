@@ -86,10 +86,7 @@ class InteractivePiano extends Component {
           useOneHandKeyMap={() => this.setState({ keyMap: oneHandDefault })}
           useTwoHandKeyMap={() => this.setState({ keyMap: twoHandDefault })}
         />
-        <div
-          className={classes.container}
-          onMouseDown={(event) => event.preventDefault()}
-        >
+        <div className={classes.container}>
           <Piano
             startNote="C3"
             endNote="C6"
