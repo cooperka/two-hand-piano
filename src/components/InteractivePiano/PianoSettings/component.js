@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -17,10 +16,7 @@ function PianoSettings({
 
   return (
     <div className={classes.wrapper}>
-      <ButtonGroup
-        color="primary"
-        className={classNames(classes.btnGroup, classes.btnGroup_first)}
-      >
+      <ButtonGroup color="primary" className={classes.btnGroup}>
         <Button
           onClick={isSettingKeyMap ? finishSettingKeyMap : startSettingKeyMap}
         >
@@ -39,14 +35,10 @@ function PianoSettings({
 
 const useStyles = makeStyles({
   wrapper: {
-    height: 60,
+    margin: 4,
   },
   btnGroup: {
-    marginTop: 8,
-    marginLeft: 8,
-  },
-  btnGroup_first: {
-    marginLeft: 0,
+    margin: 4,
   },
 });
 
