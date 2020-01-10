@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Piano from 'react-piano-component';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import { withStyles } from '@material-ui/core/styles';
 
 import { oneHandDefault, twoHandDefault } from './keyMaps';
@@ -141,18 +142,21 @@ class InteractivePiano extends Component {
             orientation="vertical"
             color="primary"
           >
-            <Button
+            <IconButton
+              className={classes.flip}
               disabled={startOctave <= PIANO_LOWEST_OCTAVE}
               onClick={() => this.increaseStartOctave(1)}
+              aria-label="Increase start octave range"
             >
-              +
-            </Button>
-            <Button
+              <DoubleArrowIcon />
+            </IconButton>
+            <IconButton
               disabled={startOctave >= PIANO_HIGHEST_OCTAVE - 1}
               onClick={() => this.increaseStartOctave(-1)}
+              aria-label="Decrease start octave range"
             >
-              -
-            </Button>
+              <DoubleArrowIcon />
+            </IconButton>
           </ButtonGroup>
           <Piano
             startNote={`${PIANO_LOWEST_NOTE}${startOctave}`}
@@ -168,18 +172,21 @@ class InteractivePiano extends Component {
             orientation="vertical"
             color="primary"
           >
-            <Button
+            <IconButton
               disabled={endOctave >= PIANO_HIGHEST_OCTAVE}
               onClick={() => this.increaseEndOctave(1)}
+              aria-label="Increase end octave range"
             >
-              +
-            </Button>
-            <Button
+              <DoubleArrowIcon />
+            </IconButton>
+            <IconButton
+              className={classes.flip}
               disabled={endOctave <= PIANO_LOWEST_OCTAVE + 1}
               onClick={() => this.increaseEndOctave(-1)}
+              aria-label="Decrease end octave range"
             >
-              -
-            </Button>
+              <DoubleArrowIcon />
+            </IconButton>
           </ButtonGroup>
         </div>
       </div>
@@ -206,6 +213,9 @@ const styles = {
   octaveBtnContainer: {
     justifyContent: 'center',
     margin: 4,
+  },
+  flip: {
+    transform: 'rotate(180deg)',
   },
 };
 
