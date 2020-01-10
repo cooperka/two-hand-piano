@@ -10,20 +10,29 @@ import PianoSettings from './PianoSettings/component';
 import ToneAudio from './ToneAudio/component';
 
 const KEY_MAP_KEY = 'KEY_MAP';
+const START_OCTAVE_KEY = 'START_OCTAVE';
+const END_OCTAVE_KEY = 'END_OCTAVE';
 
 const PIANO_LOWEST_NOTE = 'A';
 const PIANO_LOWEST_OCTAVE = 0;
 const PIANO_HIGHEST_NOTE = 'C';
 const PIANO_HIGHEST_OCTAVE = 8;
 
+const DEFAULT_START_OCTAVE = 2;
+const DEFAULT_END_OCTAVE = 5;
+
 function persistData(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+function retrieveData(key, defaultValue) {
+  return JSON.parse(localStorage.getItem(key)) || defaultValue;
+}
+
 class InteractivePiano extends Component {
   state = {
-    startOctave: 2,
-    endOctave: 5,
+    startOctave: DEFAULT_START_OCTAVE,
+    endOctave: DEFAULT_END_OCTAVE,
     keyMap: {},
     isSettingKeyMap: false,
     highlightedKeyIndex: null,
@@ -34,8 +43,17 @@ class InteractivePiano extends Component {
   }
 
   useSavedKeyMap = () => {
-    const fromStorage = JSON.parse(localStorage.getItem(KEY_MAP_KEY));
-    this.setState({ keyMap: fromStorage || twoHandDefault });
+    const storedKeyMap = retrieveData(KEY_MAP_KEY, twoHandDefault);
+    const storedStartOctave = retrieveData(
+      START_OCTAVE_KEY,
+      DEFAULT_START_OCTAVE,
+    );
+    const storedEndOctave = retrieveData(END_OCTAVE_KEY, DEFAULT_END_OCTAVE);
+    this.setState({
+      keyMap: storedKeyMap,
+      startOctave: storedStartOctave,
+      endOctave: storedEndOctave,
+    });
   };
 
   startSettingKeyMap = () => {
@@ -86,8 +104,10 @@ class InteractivePiano extends Component {
   };
 
   persistKeyMap = () => {
-    const { keyMap } = this.state;
+    const { keyMap, startOctave, endOctave } = this.state;
     persistData(KEY_MAP_KEY, keyMap);
+    persistData(START_OCTAVE_KEY, startOctave);
+    persistData(END_OCTAVE_KEY, endOctave);
   };
 
   increaseStartOctave = (numOctaves) => {
