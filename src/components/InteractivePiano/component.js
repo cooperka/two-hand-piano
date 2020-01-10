@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Piano from 'react-piano-component';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
 import { oneHandDefault, twoHandDefault } from './keyMaps';
@@ -87,6 +89,14 @@ class InteractivePiano extends Component {
           useTwoHandKeyMap={() => this.setState({ keyMap: twoHandDefault })}
         />
         <div className={classes.container}>
+          <ButtonGroup
+            className={classes.octaveBtnContainer}
+            orientation="vertical"
+            color="primary"
+          >
+            <Button onClick={undefined}>+</Button>
+            <Button onClick={undefined}>-</Button>
+          </ButtonGroup>
           <Piano
             startNote="C3"
             endNote="C6"
@@ -96,6 +106,14 @@ class InteractivePiano extends Component {
             onKeyDown={handleKeyDown}
             renderAudio={ToneAudio}
           />
+          <ButtonGroup
+            className={classes.octaveBtnContainer}
+            orientation="vertical"
+            color="primary"
+          >
+            <Button onClick={undefined}>+</Button>
+            <Button onClick={undefined}>-</Button>
+          </ButtonGroup>
         </div>
       </div>
     );
@@ -117,6 +135,10 @@ const styles = {
       position: 'absolute',
       top: 0,
     },
+  },
+  octaveBtnContainer: {
+    justifyContent: 'center',
+    margin: 4,
   },
 };
 
