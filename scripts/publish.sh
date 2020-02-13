@@ -7,6 +7,7 @@ STATUS=`git status`
 
 if [[ $STATUS == *'nothing to commit, working '*' clean'* ]]
 then
+    cp CNAME dist/CNAME
     git add -f dist
     git commit -m 'Force-commit dist for publish' --no-verify
     git push origin `git subtree split --prefix dist master`:gh-pages --force
