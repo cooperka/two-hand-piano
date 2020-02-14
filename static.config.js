@@ -47,7 +47,7 @@ export default {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content={`${api.SITE_ROOT}/${api.BASE_PATH}/images/fb-preview.png`}
+          content={`${api.SITE_ROOT}${api.BASE_PATH}/images/fb-preview.png`}
         />
         <meta property="og:image:width" content="256" />
         <meta property="og:image:height" content="256" />

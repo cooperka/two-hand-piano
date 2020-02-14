@@ -3,6 +3,8 @@ export const env = {
 };
 
 export const api = {
-  SITE_ROOT: 'https://cooperka.github.io',
-  BASE_PATH: 'two-hand-piano',
+  // With no trailing slash.
+  SITE_ROOT: 'https://piano.cooperka.com',
+  // With lead slash if present; no trailing slash.
+  BASE_PATH: '',
 };
