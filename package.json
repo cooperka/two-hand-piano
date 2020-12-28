@@ -20,22 +20,22 @@
     "clean": "rm -rf artifacts dist tmp"
   },
   "dependencies": {
-    "@material-ui/core": "4.8.2",
-    "@material-ui/icons": "4.5.1",
+    "@material-ui/core": "4.11.2",
+    "@material-ui/icons": "4.11.2",
     "classnames": "2.2.6",
-    "lodash": "4.17.15",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
-    "react-hot-loader": "4.12.18",
+    "lodash": "4.17.20",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-hot-loader": "4.13.0",
     "react-piano-component": "cooperka/react-piano-component#2020-01-09-v0.1.4-pianoKeyProps-index-onKey-getNoteAtIndex-keyCase-window-range",
-    "react-static": "7.2.3",
-    "react-static-plugin-reach-router": "7.2.3",
-    "react-static-plugin-sitemap": "7.2.3",
-    "react-static-plugin-source-filesystem": "7.2.3",
+    "react-static": "7.4.2",
+    "react-static-plugin-reach-router": "7.4.2",
+    "react-static-plugin-sitemap": "7.4.2",
+    "react-static-plugin-source-filesystem": "7.4.2",
     "tone": "13.8.25"
   },
   "devDependencies": {
-    "babel-eslint": "10.0.3",
+    "babel-eslint": "10.1.0",
     "eslint": "7.2.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-cooperka": "1.0.4",
@@ -50,7 +50,7 @@
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
     "react-test-renderer": "17.0.1",
-    "serve": "11.2.0"
+    "serve": "11.3.2"
   },
   "prettier": {
     "singleQuote": true,
