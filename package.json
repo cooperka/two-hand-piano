@@ -19,11 +19,6 @@
     "deploy": "yarn run build && scripts/publish.sh",
     "clean": "rm -rf artifacts dist tmp"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
   "dependencies": {
     "@material-ui/core": "4.8.2",
     "@material-ui/icons": "4.5.1",
@@ -41,16 +36,66 @@
   },
   "devDependencies": {
     "babel-eslint": "10.0.3",
-    "eslint": "6.1.0",
-    "eslint-config-airbnb": "18.0.1",
+    "eslint": "7.2.0",
+    "eslint-config-airbnb": "18.2.1",
     "eslint-config-cooperka": "1.0.4",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "husky": "3.1.0",
-    "prettier": "1.19.1",
-    "pretty-quick": "2.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "4.0.0",
+    "husky": "4.3.6",
+    "jest": "26.6.3",
+    "jest-watch-typeahead": "0.6.1",
+    "lsr-tooling": "1.1.0",
+    "prettier": "2.2.1",
+    "pretty-quick": "3.1.0",
+    "react-test-renderer": "17.0.1",
     "serve": "11.2.0"
-  }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "proseWrap": "always",
+    "overrides": [
+      {
+        "files": "static.config.js",
+        "options": {
+          "printWidth": 120
+        }
+      }
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/*.test.js"
+    ],
+    "transform": {
+      "\\.js$": "babel-jest",
+      "\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ],
+    "resetMocks": true
+  },
+  "babel": {
+    "presets": [
+      "react-static/babel-preset.js"
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ]
 }
