@@ -1,21 +1,27 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import '@fontsource/roboto';
 
+import theme from '../../theme';
 import InteractivePiano from '../InteractivePiano/component';
 
 function App() {
   const classes = useStyles();
 
   return (
-    <div className={classes.wrapper}>
-      <InteractivePiano />
-      <div className={classes.footer}>
-        <div>
-          &copy; 2020 Kevin Cooper &bull;{' '}
-          <a href="https://github.com/cooperka/two-hand-piano">View source</a>
+    <ThemeProvider theme={theme}>
+      <div className={classes.wrapper}>
+        <CssBaseline />
+        <InteractivePiano />
+        <div className={classes.footer}>
+          <div>
+            &copy; 2020 Kevin Cooper &bull;{' '}
+            <a href="https://github.com/cooperka/two-hand-piano">View source</a>
+          </div>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

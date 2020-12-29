@@ -12,12 +12,17 @@
     "indent": "off",
 
     // Only be strict about classes, the only one that's dangerous.
-    "no-use-before-define": ["error", { "functions": false, "classes": true, "variables": false }],
+    "no-use-before-define": [
+      "error",
+      { "functions": false, "classes": true, "variables": false }
+    ],
 
     // Just don't need it for this project
     "react/prop-types": "off",
 
     // Unnecessary
     "react/prefer-stateless-function": "off"
-  }
+  },
+
+  "ignorePatterns": ["lib", "build", "dist", "artifacts", "tmp", "out"]
 }

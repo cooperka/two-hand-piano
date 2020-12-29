@@ -8,18 +8,19 @@
   "author": "Kevin Cooper <cooperka92@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint *.js src",
-    "test": "echo 'No tests defined'",
-    "format": "prettier --write '*.js' --write '{src,__mocks__}/**/*.js'",
     "start": "react-static start",
-    "stage": "react-static build --staging",
+    "format": "prettier --write '{src}/**/*.js' --write '*.{js,md}'",
+    "lint": "eslint --ext .js .",
+    "test": "jest",
+    "clean": "rm -rf build dist artifacts tmp",
     "build": "react-static build",
-    "analyze": "react-static build --analyze",
     "serve": "serve dist -p 3000",
-    "deploy": "yarn run build && scripts/publish.sh",
-    "clean": "rm -rf artifacts dist tmp"
+    "stage": "yarn run build --staging && yarn run serve",
+    "analyze": "yarn run build --analyze",
+    "deploy": "yarn run build && scripts/publish.sh"
   },
   "dependencies": {
+    "@fontsource/roboto": "4.0.1",
     "@material-ui/core": "4.11.2",
     "@material-ui/icons": "4.11.2",
     "classnames": "2.2.6",

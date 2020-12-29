@@ -5,10 +5,7 @@ import { AppContainer } from 'react-hot-loader';
 import { env } from './constants';
 import App from './components/App/component';
 
-import './index.css';
-
-// Top-level component for static rendering.
-export default App;
+import './styles.css';
 
 if (!env.IS_STATIC) {
   const target = document.getElementById('root');
@@ -26,13 +23,15 @@ if (!env.IS_STATIC) {
     );
   };
 
-  // Render!
   render(App);
 
-  // Hot Module Replacement (HMR).
+  // Enable Hot Module Replacement (HMR).
   if (module && module.hot) {
     module.hot.accept('./components/App/component', () => {
       render(App);
     });
   }
 }
+
+// Export top-level component as JSX (for static rendering).
+export default App;
