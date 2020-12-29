@@ -4,6 +4,8 @@ import { api } from './src/constants';
 
 // Docs: https://github.com/react-static/react-static/blob/master/docs/config.md
 export default {
+  plugins: ['jss-provider'],
+
   siteRoot: api.SITE_ROOT,
   basePath: api.BASE_PATH,
 

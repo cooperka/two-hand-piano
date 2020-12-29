@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "start": "react-static start",
-    "format": "prettier --write '{src}/**/*.js' --write '*.{js,md}'",
+    "format": "prettier --write '{src,plugins}/**/*.js' --write '*.{js,md}'",
     "lint": "eslint --ext .js .",
     "test": "jest",
     "clean": "rm -rf build dist artifacts tmp",
