@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
 
@@ -40,7 +40,7 @@ const sampleData = {
   C8: 'C8.[mp3|ogg]',
 };
 
-class ToneAudio extends Component {
+class ToneAudio extends React.Component {
   constructor(props) {
     super(props);
 

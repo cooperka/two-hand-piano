@@ -1,21 +1,28 @@
 import React from 'react';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import {
+  makeStyles,
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import '@fontsource/roboto';
 
 import theme from '../../theme';
 import InteractivePiano from '../InteractivePiano/component';
 
+const muiTheme = createMuiTheme(theme);
+
 function App() {
   const classes = useStyles();
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={muiTheme}>
       <div className={classes.wrapper}>
         <CssBaseline />
         <InteractivePiano />
         <div className={classes.footer}>
           <div>
+            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
             &copy; 2020 Kevin Cooper &bull;{' '}
             <a href="https://github.com/cooperka/two-hand-piano">View source</a>
           </div>

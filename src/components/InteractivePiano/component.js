@@ -156,6 +156,7 @@ class InteractivePiano extends Component {
           useTwoHandKeyMap={() => this.setState({ keyMap: twoHandDefault })}
         />
         <div
+          role="none"
           className={classes.container}
           onMouseDown={(event) => event.preventDefault()}
         >

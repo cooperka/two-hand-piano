@@ -10,6 +10,7 @@ function AccidentalKey({ isPlaying, isHighlighted, text, eventHandlers }) {
   return (
     <div className={classes.accidentalWrapper}>
       <button
+        type="button"
         className={classNames(classes.accidentalKey, {
           playing: isPlaying,
           highlighted: isHighlighted,
@@ -27,6 +28,7 @@ function NaturalKey({ isPlaying, isHighlighted, text, eventHandlers }) {
 
   return (
     <button
+      type="button"
       className={classNames(classes.naturalKey, {
         playing: isPlaying,
         highlighted: isHighlighted,
